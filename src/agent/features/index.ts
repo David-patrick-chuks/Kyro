@@ -49,6 +49,7 @@ async function canSendTweet() {
 }
 
 export const postToInsta = async (imageUrl: string, caption: string): Promise<void> => {
+    console.log("----Uploading Post to Instagram----");
     const ig = new IgApiClient();
     ig.state.generateDevice("Kyro");
 
@@ -78,8 +79,9 @@ export const postToInsta = async (imageUrl: string, caption: string): Promise<vo
 const postToTwitter = async (imageUrl: string, caption: string): Promise<void> => {
 
     const canSend = await canSendTweet();
-
+    
     if (!canSend) return; // If we cannot send tweet, exit the function
+    console.log("----Uploading Post to Twiter----");
     const uri = imageUrl;
     const filename = "image.png";
 
@@ -100,8 +102,9 @@ const postToTwitter = async (imageUrl: string, caption: string): Promise<void> =
             });
 
             await newTweet.save();
-            console.log("Tweeted: ", caption);
-            console.log("Tweeted Data: ", send);
+            console.log("Twitter post uploaded successfully! ✅");
+            // console.log("Tweeted: ", caption);
+            // console.log("Tweeted Data: ", send);
         } catch (e) {
             console.log(e)
         }
@@ -342,4 +345,4 @@ export const main = async () => {
 };
 
 // Execute the function
-main();
+// main();

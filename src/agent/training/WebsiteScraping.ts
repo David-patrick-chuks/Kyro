@@ -101,6 +101,7 @@ async function scrapeAllRoutes(baseUrl: string): Promise<void> {
 
     await connectDB()
     // Save parsed data to MongoDB
+    
     const agentInstance = new Agent({ WebsiteData: result });
     await agentInstance.save();
 

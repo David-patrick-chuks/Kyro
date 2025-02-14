@@ -1,12 +1,13 @@
 import figlet from "figlet";
 import chalk from "chalk";
 import boxen from "boxen";
+import { main } from "./features";
 
 async function runKyro(): Promise<void> {
   try {
     // Render ASCII art
     const bannerText: string = await new Promise((resolve, reject) => {
-      figlet("KYRO", { font: "Ghost" }, (err, data) => {
+      figlet("Kyro", { font: "Ghost" }, (err, data) => {
         if (err) {
           reject("Something went wrong..." + err);
         } else {
@@ -25,6 +26,9 @@ async function runKyro(): Promise<void> {
     await delay(1000);
     console.log(chalk.green.bold("[READY] Kyro AI is now online. 🚀"));
     console.log("\n");
+
+    console.log("--------------------------------")
+    await main()
 
   } catch (error) {
     console.error(chalk.red.bold("✖ [ERROR] System Failure:"), error);
