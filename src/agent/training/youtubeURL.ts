@@ -80,7 +80,7 @@ export async function Train_Agent_with_Youtube_URL(url: string) {
             throw new Error('Failed to generate training prompt.');
         }
         // logger.debug("Training source generated : Title" , source[0]?.transcriptTitle)
-        console.log("Training source generated : Title" , source)
+        console.log("Training source generated : fullTranscript" , source[0]?.fullTranscript)
         return source;
     } catch (error) {
         logger.error('Error in Train_Agent_with_Youtube_URL:', error);
