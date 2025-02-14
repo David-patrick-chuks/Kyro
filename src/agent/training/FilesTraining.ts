@@ -5,6 +5,8 @@ import csvParser from 'csv-parser';
 import { Readable } from 'stream';
 import fs from 'fs';
 import path from 'path';
+import { Agent } from '../../dbModels/Agent';
+import connectDB from '../../config/db';
 
 export type SupportedFileType = 'pdf' | 'doc' | 'docx' | 'csv' | 'txt';
 
@@ -50,7 +52,7 @@ export async function parseFile(fileBuffer: Buffer, fileType: SupportedFileType)
 async function testParse() {
     try {
         // Define the file path and type
-        const filePath = path.join(__dirname, 'test.txt'); 
+        const filePath = path.join(__dirname, 'test.txt');
         const fileType: SupportedFileType = 'txt'; // Change to match your test file's format
 
         // Read the file into a buffer
@@ -59,6 +61,10 @@ async function testParse() {
         // Call the parseFile function
         const content = await parseFile(fileBuffer, fileType);
         console.log('Parsed Content:', content);
+        await connectDB()
+        // Save parsed data to MongoDB
+        const agentInstance = new Agent({ TextData: content });
+        await agentInstance.save();
     } catch (error) {
         console.error('Error parsing file:', error);
     }

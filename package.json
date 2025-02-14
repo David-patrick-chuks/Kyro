@@ -7,10 +7,11 @@
 		"start": "tsc && node build/index.js",
 		"server": "tsc && node build/server.js",
 		"Kyro": "tsc && node  --no-warnings  build/index.js",
+		"del": "tsc && node  --no-warnings  build/utils/DeleteDatabase.js",
+		"post": "tsc && node  --no-warnings  build/agent/features/index.js",
 		"dev": "tsc && nodemon build/index.js",
 		"ai": "tsc && node build/publisher.js",
-		"engine": "tsc && node build/engine.js",
-		"genkey": "node key/index.js",
+		"train-agent:web": "tsc && node build/agent/training/WebsiteScraping.js",
 		"format": "prettier . --check",
 		"format:fix": "prettier . --write",
 		"prepare": "husky"

@@ -1,45 +1,19 @@
 import mongoose from "mongoose";
-import logger from "../config/logger";
+import { Agent } from "../dbModels/Agent";
+import { Tweet } from "../dbModels/Tweet";
+import connectDB from "../config/db";
 
-const deleteAllDataExceptAdmin = async (): Promise<void> => {
+// Function to delete all documents in the database
+export const deleteAllData = async () => {
   try {
-    // Ensure the database is connected before proceeding
-    if (!mongoose.connection.readyState) {
-      throw new Error("Database is not connected.");
-    }
+    connectDB()
+    await Agent.deleteMany({});
+    await Tweet.deleteMany({});
 
-    // Wait for the connection to be ready
-    const db = mongoose.connection.db;
-    if (!db) {
-      throw new Error("Database instance is undefined.");
-    }
-
-    const collections = await db.listCollections().toArray();
-
-    for (const collection of collections) {
-      const collectionName = collection.name;
-      const model = mongoose.connection.models[collectionName] || db.collection(collectionName);
-
-      if (collectionName === "users") {
-        // Keep only admin users in the "users" collection
-        await model.deleteMany({ role: { $ne: "admin" } });
-        logger.info(`Deleted all non-admin users from ${collectionName}`);
-      } else {
-        // Drop all other collections
-        await model.deleteMany({});
-        logger.info(`Deleted all documents from ${collectionName}`);
-      }
-    }
-
-    logger.info("Database cleanup completed successfully.");
+    console.log("✅ All data from Agent and Tweet collections has been deleted.");
   } catch (error) {
-    logger.error("Error deleting database data:", error);
-    throw new Error("Failed to clean database");
+    console.error("❌ Error deleting data:", error);
   }
 };
 
-// Ensure database connection before running the function
-mongoose.connection.once("open", async () => {
-  logger.info("Connected to database. Running cleanup...");
-  await deleteAllDataExceptAdmin();
-});
+deleteAllData()

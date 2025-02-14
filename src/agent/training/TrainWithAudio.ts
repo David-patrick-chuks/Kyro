@@ -5,7 +5,7 @@ import fs from "fs";
 
 dotenv.config();
 
-const apiKey = process.env.GEMINI_API_KEY_41 as string;
+const apiKey: string = "AIzaSyCCMWWDVJq83MCTtt4za1LMk3rPtEyO2DE";
 if (!apiKey) {
     throw new Error("API key is missing");
 }
@@ -27,7 +27,7 @@ export class AIAudioFileService {
      */
     async processFile(filePath: string, displayName: string, mimeType: string): Promise<string> {
         try {
-            const uploadResult = await this.fileManager.uploadFile(filePath, {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+            const uploadResult = await this.fileManager.uploadFile(filePath, {
                 mimeType,
                 displayName,
             });

@@ -18,4 +18,4 @@ export const agentSchema = new Schema<IAgent>({
 
 
 // Create the Tweet model
-export const Agent: Model<IAgent> = mongoose.model<IAgent>("Tweet", agentSchema);
+export const Agent: Model<IAgent> = mongoose.model<IAgent>("Agent", agentSchema);

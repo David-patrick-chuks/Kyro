@@ -2,6 +2,10 @@ import puppeteer from 'puppeteer';
 import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 import { saveScrapedData } from '../../utils/saveScrapData';
+import { generateCleanWebsiteData } from '../script/summarize';
+import { trainingSource } from '../data';
+import connectDB from '../../config/db';
+import { Agent } from '../../dbModels/Agent';
 
 // Function to clean the HTML content
 function cleanHTML(inputHtml: string): string {
@@ -58,11 +62,11 @@ async function getAllLinks(url: string): Promise<string[]> {
         return [];
     }
 }
-
 // Function to scrape and clean content from all routes on a website
 async function scrapeAllRoutes(baseUrl: string): Promise<void> {
     const visitedLinks = new Set<string>();
     const linksToVisit = [baseUrl];
+    const aggregatedContent: Record<string, string> = {}; // Store scraped content by URL
 
     while (linksToVisit.length > 0) {
         const currentLink = linksToVisit.pop();
@@ -71,8 +75,9 @@ async function scrapeAllRoutes(baseUrl: string): Promise<void> {
 
             const cleanedContent = await scrapeAndCleanContent(currentLink);
             if (cleanedContent) {
-                console.log(`Cleaned Content from ${currentLink}:`, cleanedContent);
+                console.log(`scrapping=======: ${currentLink}`,);
                 await saveScrapedData(currentLink, cleanedContent);
+                aggregatedContent[currentLink] = cleanedContent; // Store content by URL
             } else {
                 console.log(`Failed to scrape and clean content from ${currentLink}.`);
             }
@@ -85,10 +90,24 @@ async function scrapeAllRoutes(baseUrl: string): Promise<void> {
             }
         }
     }
+
+    // Log the entire aggregated content for AI processing
+    // console.log("\n======= Aggregated Scraped Content =======\n", JSON.stringify(aggregatedContent, null, 2));
+    console.log("\n === DOne scrapping the website =======\n",)
+    const data = `\n======= Aggregated Scraped Content =======\n${JSON.stringify(aggregatedContent, null, 2)}`;
+
+    const result = await generateCleanWebsiteData(data);
+    console.log("Result from ai after scrapping", result)
+
+    await connectDB()
+    // Save parsed data to MongoDB
+    const agentInstance = new Agent({ WebsiteData: result });
+    await agentInstance.save();
+
 }
 
 // Example usage
-const baseUrl = 'https://davidtsx.vercel.app';
+const baseUrl = trainingSource.websiteUrl;
 scrapeAllRoutes(baseUrl)
     .then(() => {
         console.log('Scraping completed.');

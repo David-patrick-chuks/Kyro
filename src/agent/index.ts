@@ -1,15 +1,12 @@
-#!/usr/bin/env node
-import boxen from "boxen";
-import chalk from "chalk";
 import figlet from "figlet";
-import { publishContent } from "../publisher";
+import chalk from "chalk";
+import boxen from "boxen";
 
-async function runKush(): Promise<void> {
+async function runKyro(): Promise<void> {
   try {
-
     // Render ASCII art
     const bannerText: string = await new Promise((resolve, reject) => {
-      figlet("KUSH", { font: "Ghost" }, (err, data) => {
+      figlet("KYRO", { font: "Ghost" }, (err, data) => {
         if (err) {
           reject("Something went wrong..." + err);
         } else {
@@ -21,32 +18,21 @@ async function runKush(): Promise<void> {
     console.log(`\n`);
     console.log(chalk.cyan(bannerText));
 
-    // Social links
-    const twitterLink : string = "https://x.com/davepatty5686";
-    const buymeaCoffeeLink : string = "https://buymeacoffee.com/davidpatrickchuks";
-
-    const twitter = `${chalk.white("🐦 Follow @")} ${chalk.cyan(twitterLink)}`;
-    const buyMeCoffee = `${chalk.white("💰 Support @")} ${chalk.cyan(buymeaCoffeeLink)}`;
-
-    const header = `${twitter}\n${buyMeCoffee}`;
-
-    console.log(
-      boxen(header, {
-        borderColor: "grey",
-        borderStyle: "classic",
-        align: "left",
-      })
-    );
-    console.log(`\n`);
-
-
-    // Publish the content
-    await publishContent();
+    // Shortened CLI-style startup sequence
+    console.log(chalk.green.bold("[BOOT] Kyro AI initializing..."));
+    await delay(800);
+    console.log(chalk.yellow("[SYSTEM] Establishing secure connection... 🔐"));
+    await delay(1000);
+    console.log(chalk.green.bold("[READY] Kyro AI is now online. 🚀"));
+    console.log("\n");
 
   } catch (error) {
-    console.error(chalk.red.bold("✖ An error occurred:"), error);
+    console.error(chalk.red.bold("✖ [ERROR] System Failure:"), error);
   }
 }
 
-// Start the application
-runKush();
+function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+runKyro();

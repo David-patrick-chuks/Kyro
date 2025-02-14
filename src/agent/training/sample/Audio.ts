@@ -3,11 +3,13 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import path from "path";
 import fs from "fs";
-import mime from "mime-types";  
+import mime from "mime-types";
+import connectDB from "../../../config/db";
+import { Agent } from "../../../dbModels/Agent";
 
 dotenv.config();
 
-const apiKey = process.env.GEMINI_API_KEY_41;
+const apiKey = "AIzaSyBUHKun0ofNXC4c57lWM7VwVA5627BdCsI"
 if (!apiKey) {
   throw new Error("API key is missing");
 }
@@ -72,7 +74,13 @@ const processAudioFile = async (fileName: string): Promise<void> => {
     ]);
 
     // Log the response
+    const content = result.response.text()
     console.log(result.response.text());
+
+    await connectDB()
+    // Save parsed data to MongoDB
+    const agentInstance = new Agent({ AudioData: content });
+    await agentInstance.save();
 
     // Delete the uploaded file after processing
     await fileManager.deleteFile(uploadResult.file.name);
@@ -83,7 +91,7 @@ const processAudioFile = async (fileName: string): Promise<void> => {
   }
 };
 
-// Example usage: Call the function with the correct file name relative to the project root
+
 processAudioFile("LilTjay.mp3").catch((error) => {
   console.error("An error occurred:", error);
 });

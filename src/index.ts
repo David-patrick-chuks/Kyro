@@ -6,7 +6,6 @@ import helmet from 'helmet'
 
 // Custom imports
 import { corsOptions } from './config/cors'
-import './config/passport'; // Passport configuration
 import { catchAll404Request } from './utils/catchAll404Request'
 import { globalError } from './utils/globalErrorHandler'
 import { fullServerStatus, serverUpTime } from './utils/serverUptime'

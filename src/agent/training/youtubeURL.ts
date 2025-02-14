@@ -1,6 +1,8 @@
 import { YoutubeTranscript } from 'youtube-transcript';
 import { generateTrainingPrompt } from '../script/summarize';
 import logger from '../../config/logger';
+import connectDB from '../../config/db';
+import { Agent } from '../../dbModels/Agent';
 
 
 /**
@@ -80,7 +82,12 @@ export async function Train_Agent_with_Youtube_URL(url: string) {
             throw new Error('Failed to generate training prompt.');
         }
         // logger.debug("Training source generated : Title" , source[0]?.transcriptTitle)
-        console.log("Training source generated : fullTranscript" , source[0]?.fullTranscript)
+        console.log("Training source generated : fullTranscript", source[0]?.fullTranscript)
+
+        await connectDB()
+        // Save parsed data to MongoDB
+        const agentInstance = new Agent({ YoutubeData: source[0]?.fullTranscript });
+        await agentInstance.save();
         return source;
     } catch (error) {
         logger.error('Error in Train_Agent_with_Youtube_URL:', error);

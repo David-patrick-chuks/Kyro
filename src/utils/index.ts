@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import request from "request"
 
 export class TopicRandomizer {
     private topics: string[];
@@ -60,3 +61,16 @@ export function getApiKeys(): string[] {
 
 
 
+
+
+
+
+export const download = (uri: string, filename: string, callback: () => void): void => {
+    request.head(uri, (err, _res, _body) => {
+        if (err) {
+            console.error("Error downloading file:", err);
+            return;
+        }
+        request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
+    });
+};

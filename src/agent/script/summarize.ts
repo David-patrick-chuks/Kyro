@@ -7,56 +7,51 @@ dotenv.config();
 
 
 const geminiApiKeys = [
-    process.env.GEMINI_API_KEY_1 || "API_KEY_1",
-    process.env.GEMINI_API_KEY_2 || "API_KEY_2",
-    process.env.GEMINI_API_KEY_3 || "API_KEY_3",
-    process.env.GEMINI_API_KEY_4 || "API_KEY_4",
-    process.env.GEMINI_API_KEY_5 || "API_KEY_5",
-    process.env.GEMINI_API_KEY_6 || "API_KEY_6",
-    process.env.GEMINI_API_KEY_7 || "API_KEY_7",
-    process.env.GEMINI_API_KEY_8 || "API_KEY_8",
-    process.env.GEMINI_API_KEY_9 || "API_KEY_9",
-    process.env.GEMINI_API_KEY_10 || "API_KEY_10",
-    process.env.GEMINI_API_KEY_11 || "API_KEY_11",
-    process.env.GEMINI_API_KEY_12 || "API_KEY_12",
-    process.env.GEMINI_API_KEY_13 || "API_KEY_13",
-    process.env.GEMINI_API_KEY_14 || "API_KEY_14",
-    process.env.GEMINI_API_KEY_15 || "API_KEY_15",
-    process.env.GEMINI_API_KEY_16 || "API_KEY_16",
-    process.env.GEMINI_API_KEY_17 || "API_KEY_17",
-    process.env.GEMINI_API_KEY_18 || "API_KEY_18",
-    process.env.GEMINI_API_KEY_19 || "API_KEY_19",
-    process.env.GEMINI_API_KEY_20 || "API_KEY_20",
-    process.env.GEMINI_API_KEY_21 || "API_KEY_21",
-    process.env.GEMINI_API_KEY_22 || "API_KEY_22",
-    process.env.GEMINI_API_KEY_23 || "API_KEY_23",
-    process.env.GEMINI_API_KEY_24 || "API_KEY_24",
-    process.env.GEMINI_API_KEY_25 || "API_KEY_25",
-    process.env.GEMINI_API_KEY_26 || "API_KEY_26",
-    process.env.GEMINI_API_KEY_27 || "API_KEY_27",
-    process.env.GEMINI_API_KEY_28 || "API_KEY_28",
-    process.env.GEMINI_API_KEY_29 || "API_KEY_29",
-    process.env.GEMINI_API_KEY_30 || "API_KEY_30",
-    process.env.GEMINI_API_KEY_31 || "API_KEY_31",
-    process.env.GEMINI_API_KEY_32 || "API_KEY_32",
-    process.env.GEMINI_API_KEY_33 || "API_KEY_33",
-    process.env.GEMINI_API_KEY_34 || "API_KEY_34",
-    process.env.GEMINI_API_KEY_35 || "API_KEY_35",
-    process.env.GEMINI_API_KEY_36 || "API_KEY_36",
-    process.env.GEMINI_API_KEY_37 || "API_KEY_37",
-    process.env.GEMINI_API_KEY_38 || "API_KEY_38",
-    process.env.GEMINI_API_KEY_39 || "API_KEY_39",
-    process.env.GEMINI_API_KEY_40 || "API_KEY_40",
-    process.env.GEMINI_API_KEY_41 || "API_KEY_41",
-    process.env.GEMINI_API_KEY_42 || "API_KEY_42",
-    process.env.GEMINI_API_KEY_43 || "API_KEY_43",
-    process.env.GEMINI_API_KEY_44 || "API_KEY_44",
-    process.env.GEMINI_API_KEY_45 || "API_KEY_45",
-    process.env.GEMINI_API_KEY_46 || "API_KEY_46",
-    process.env.GEMINI_API_KEY_47 || "API_KEY_47",
-    process.env.GEMINI_API_KEY_48 || "API_KEY_48",
-    process.env.GEMINI_API_KEY_49 || "API_KEY_49",
-    process.env.GEMINI_API_KEY_50 || "API_KEY_50",
+   
+    "AIzaSyATWBaufybCmja_dcpn8qMz5B6dw1DKuKk",
+    "AIzaSyDouDNZZtHXlF2lgz9QqCnc-vLbz5v71Kk",
+    "AIzaSyBhwCvQDSG-IF1cIWfwh05Lu-FlvJXqkRc",
+    "AIzaSyCBxpd6hbxvrFfTX1lOv91nFD6-7z9nXtE",
+    "AIzaSyAGq8jCCKcSyuNYX-FqrWinsvUNqv4Bey4",
+    "AIzaSyA0H0rBD3zWviEo5kilQ8EE2b6u0vIXtIo",
+    "AIzaSyA5_ODpSN7twkfTqLzrMPO5OOmI4A7WsQc",
+    "AIzaSyDfDWTjSdTxYXKriQD7eppLscJ_oXWiXk0",
+    "AIzaSyA3M8tl5BXMhRbNF7I8fTDQmIQ_oo_IeNw",
+    "AIzaSyC2HLk9_WJtMTbEQxCpRSGOGPkXFVPZ35g",
+    "AIzaSyBwNCakKQ6wc7pg3q4PxiBhq_rCfZOb2UU",
+    "AIzaSyBsiPPnjvrDhut2DMTkQ6wxeHSPfyBEihk",
+    "AIzaSyAQ1rZygvFT8NzPhAO6qxa-dtaMEHqZP64",
+    "AIzaSyDOuzfEaU37K19tOtv5cjokC1pBs2lZLCQ",
+    "AIzaSyA81tzxjDxVnjjZq8Op8D5AQm3-ckXA0cg",
+    "AIzaSyB5Hu2ZLAqsEfiZuQi94RhIbCe1KcOj4DM",
+    "AIzaSyDMiBX1S2gQVxUFT85rnMrVNruWmBKwlTk",
+    "AIzaSyC1lPUfpiJnsbDL2CdAa5zZb9CL4tgvK80",
+    "AIzaSyArInw0_5TGUcVuO0LKmNQLy10lCW49okM",
+    "AIzaSyBJTwgOwvmu7w_rXcvY5or7ZI2vvou70cA",
+    "AIzaSyDmYhOZLV4hd0apv6ZM1R3NS7LWmTpp_s4",
+    "AIzaSyApO0edRaTwI2JWkhsZq_SPyPQ-q5OeE4o",
+    "AIzaSyCpdaWdiYW2__6cRywmzkH6Kwr0TpgjP_E",
+    "AIzaSyCuR1HxXWSXgoY_Nlw6OWMLEaOGDj7YRF8",
+    "AIzaSyDgSGUAH569RjrmYjz-QUsDMqjITiHS7OA",
+    "AIzaSyDNJ-IRsFQumvGEi044P_J8zPs3wIU367o",
+    "AIzaSyBz6jaMp4Z5304Knx9UiJdX8DQjw1lqg9g",
+    "AIzaSyBHVdQ5gjbWiYrxUNE_wbNTZ_aUGPjWqwI",
+    "AIzaSyDNa1rY4QAiVwzj_1LcGPPFAetEfVa7zr0",
+    "AIzaSyA9Df2q2kOR9MZkrCimGjgUVAKuz1kyZPg",
+    "AIzaSyDAwMfnUqo7REPxSkLVOCo9OTeaEHAf43E",
+    "AIzaSyAv4K3hVofefPm1d5mt4Y39NQVXNQ49Dbg",
+    "AIzaSyB1YZPMxgYzLdhyWOoLQoi6Akv_AVZQihs",
+    "AIzaSyDV9XzIcYhYw9uqNrWZNfI25GT3iFlGy3A",
+    "AIzaSyAIcaMSaIPnbsulIMi7WJSrx95tiwyyjIo",
+    "AIzaSyDi4JRtfBP0NEXXWLT40rYTD5-_bIBIogQ",
+    "AIzaSyADgAkDx5jvf8kmyk9NqcKSQtSNqeG62qA",
+    "AIzaSyDYeeex41Ssr409I1sx04Jxk3xlb-z1O5M",
+    "AIzaSyAF8TSVWvVTv62X-bmeHTXv21KBDgcYDVE",
+    "AIzaSyBUACYkd6ZGP2madg6weu5Twbrb8LtsjKQ",
+    "AIzaSyB6yhfVxwbEAwXcgoApKTJPeutdjH_yWH4",
+    "AIzaSyAwePV5GXjqn2IrHs9rWlZHGeei4LvXrSo",
+    "AIzaSyBUHKun0ofNXC4c57lWM7VwVA5627BdCsI",
+    "AIzaSyCCMWWDVJq83MCTtt4za1LMk3rPtEyO2DE",
 ];
 
 
@@ -160,6 +155,95 @@ export async function generateTrainingPrompt(transcript: string, prompt: string 
                 logger.error("Service is temporarily unavailable. Retrying...");
                 await new Promise(resolve => setTimeout(resolve, 5000));
                 return generateTrainingPrompt(transcript, prompt);
+            } else {
+                logger.error("Error generating training prompt:", error.message);
+                return `An error occurred: ${error.message}`;
+            }
+        } else {
+            logger.error("An unknown error occurred:", error);
+            return "An unknown error occurred.";
+        }
+    }
+}
+
+
+
+
+
+
+// comment
+const MainPrompt_2 = "You are tasked with transforming the webite scrapped data into a training-ready system prompt. The goal is to format the data into structured data without reducing its content, and prepare it for use in training another AI model.";
+
+const getWebsiteScrapeDatatSchema = () => {
+    return {
+        description: `Transform the website data into a structured format, suitable for training another AI model. Ensure the content remains intact and is formatted correctly.`,
+        type: SchemaType.ARRAY,
+        items: {
+            type: SchemaType.OBJECT,
+            properties: {
+                content: {
+                    type: SchemaType.STRING,
+                    description: "The full, unaltered website scraped data.",
+                    nullable: false,
+                },
+            },
+            required: [
+                "content",
+            ],
+        },
+    };
+};
+
+export async function generateCleanWebsiteData(data: string, prompt: string = MainPrompt_2): Promise<any> {
+    let geminiApiKey = geminiApiKeys[currentApiKeyIndex];
+    let currentApiKeyName = `GEMINI_API_KEY_${currentApiKeyIndex + 1}`;
+
+    if (!geminiApiKey) {
+        logger.error("No Gemini API key available.");
+        return "No API key available.";
+    }
+
+    const schema = await getWebsiteScrapeDatatSchema();
+    const generationConfig = {
+        responseMimeType: "application/json",
+        responseSchema: schema,
+    };
+
+    const googleAI = new GoogleGenerativeAI(geminiApiKey);
+    const model = googleAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+        generationConfig,
+    });
+
+
+    const cleanedTranscript = cleanTranscript(data);
+    // Combine the prompt, title, and transcript for processing
+    const combinedPrompt = `${prompt}\n\nVideo Transcript:\n${cleanedTranscript}`;
+
+    try {
+        const result = await model.generateContent(combinedPrompt);
+
+        if (!result || !result.response) {
+            logger.info("No response received from the AI model. || Service Unavailable");
+            return "Service unavailable!";
+        }
+
+        const responseText = result.response.text();
+        const data = JSON.parse(responseText);
+
+        return data;
+
+    } catch (error) {
+        if (error instanceof Error) {
+            if (error.message.includes("429 Too Many Requests")) {
+                logger.error(`---${currentApiKeyName} limit exhausted, switching to the next API key...`);
+                geminiApiKey = getNextApiKey();
+                currentApiKeyName = `GEMINI_API_KEY_${currentApiKeyIndex + 1}`;
+                return generateTrainingPrompt(data, prompt);
+            } else if (error.message.includes("503 Service Unavailable")) {
+                logger.error("Service is temporarily unavailable. Retrying...");
+                await new Promise(resolve => setTimeout(resolve, 5000));
+                return generateTrainingPrompt(data, prompt);
             } else {
                 logger.error("Error generating training prompt:", error.message);
                 return `An error occurred: ${error.message}`;
