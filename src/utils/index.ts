@@ -68,7 +68,7 @@ export function getApiKeys(): string[] {
 export const download = (uri: string, filename: string, callback: () => void): void => {
     request.head(uri, (err, _res, _body) => {
         if (err) {
-            console.error("Error downloading file:", err);
+            console.error("Error downloading file:", err?.message);
             return;
         }
         request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);

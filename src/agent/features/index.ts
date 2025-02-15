@@ -337,9 +337,9 @@ export const main = async () => {
         console.log("No image found for the provided query:", query)
         return;
     }
-    await postToTwitter(image, postContent.postContent)
-
     await postToInsta(image, postContent.postContent);
+    // await postToTwitter(image, postContent.postContent)
+
 
 
 };
